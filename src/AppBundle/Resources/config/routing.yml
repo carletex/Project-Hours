@@ -1,0 +1,11 @@
+app_records:
+    resource: "@AppBundle/Resources/config/routing/record.yml"
+    prefix:   /records
+
+app_projects:
+    resource: "@AppBundle/Resources/config/routing/project.yml"
+    prefix:   /projects
+
+app_clients:
+    resource: "@AppBundle/Resources/config/routing/client.yml"
+    prefix:   /clients

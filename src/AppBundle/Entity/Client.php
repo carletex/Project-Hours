@@ -3,12 +3,13 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Client
  *
- * @ORM\Table()
  * @ORM\Entity
+ * @ORM\Table()
  */
 class Client
 {
@@ -32,7 +33,7 @@ class Client
     /**
      * @ORM\OneToMany(targetEntity="Project", mappedBy="client")
      */
-    protected $projects;
+    private $projects;
 
     public function __construct()
     {
@@ -99,10 +100,15 @@ class Client
     /**
      * Get projects
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProjects()
     {
         return $this->projects;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }

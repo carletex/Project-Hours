@@ -1,0 +1,30 @@
+records:
+    path:     /
+    defaults: { _controller: "AppBundle:Record:index" }
+
+records_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Record:show" }
+
+records_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Record:new" }
+
+records_create:
+    path:     /create
+    defaults: { _controller: "AppBundle:Record:create" }
+    methods:  POST
+
+records_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Record:edit" }
+
+records_update:
+    path:     /{id}/update
+    defaults: { _controller: "AppBundle:Record:update" }
+    methods:  [POST, PUT]
+
+records_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Record:delete" }
+    methods:  [POST, DELETE]

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Project
@@ -30,9 +31,19 @@ class Project
 
     /**
      * @ORM\ManyToOne(targetEntity="Client", inversedBy="projects")
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="client_id", referencedColumnName="id")
      */
-    protected $client;
+    private $client;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Record", mappedBy="project")
+     */
+    private $records;
+
+    public function __construct()
+    {
+        $this->records = new ArrayCollection();
+    }
 
 
     /**
@@ -84,10 +95,15 @@ class Project
     /**
      * Get client
      *
-     * @return \AppBundle\Entity\Client 
+     * @return \AppBundle\Entity\Client
      */
     public function getClient()
     {
         return $this->client;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }
