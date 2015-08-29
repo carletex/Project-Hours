@@ -1,3 +1,9 @@
+index:
+    path: /
+    defaults:
+        _controller:  FrameworkBundle:Template:template
+        template:     '@AppBundle/Resources/views/index.html.twig'
+
 app_records:
     resource: "@AppBundle/Resources/config/routing/record.yml"
     prefix:   /records

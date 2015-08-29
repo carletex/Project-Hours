@@ -221,4 +221,19 @@ class ProjectController extends Controller
             ->getForm()
         ;
     }
+
+    /**
+     * Lists all Project entities.
+     *
+     */
+    public function blockIndexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('AppBundle:Project')->findAll();
+
+        return $this->render('AppBundle:Project:block/list.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
 }

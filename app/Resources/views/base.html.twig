@@ -41,14 +41,17 @@
                   </ul>
                   <div class="collapse navbar-collapse navbar-ex1-collapse">
                       <ul class="nav navbar-nav side-nav">
-                          <li class="active">
-                              <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Clients</a>
+                          <li class="{% if app.request.attributes.get('_route') == 'index' %}active{% endif %}">
+                            <a href="{{ path('index') }}"><i class="fa fa-fw fa-dashboard"></i> Home</a>
+                          </li>
+                          <li class="{% if app.request.attributes.get('_route') == 'clients' %}active{% endif %}">
+                              <a href="{{ path('clients') }}"><i class="fa fa-fw fa-dashboard"></i> Clients</a>
+                          </li>
+                          <li class="{% if app.request.attributes.get('_route') == 'projects' %}active{% endif %}">
+                              <a href="{{ path('projects') }}"><i class="fa fa-fw fa-bar-chart-o"></i> Projects</a>
                           </li>
                           <li>
-                              <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Projects</a>
-                          </li>
-                          <li>
-                              <a href="tables.html"><i class="fa fa-fw fa-table"></i> Statistics</a>
+                              <a href="#"><i class="fa fa-fw fa-table"></i> Statistics</a>
                           </li>
                       </ul>
                   </div>

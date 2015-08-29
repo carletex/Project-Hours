@@ -221,4 +221,18 @@ class RecordController extends Controller
             ->getForm()
         ;
     }
+    /**
+     * Lists all Record entities.
+     *
+     */
+    public function blockLastAction($max = 5)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('AppBundle:Record')->findBy(array(), array('id' => 'DESC'), $max);
+
+        return $this->render('AppBundle:Record:block/list.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
 }

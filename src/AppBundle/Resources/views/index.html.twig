@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+<ul>
+    <li>
+        <a href="{{ path('records_new') }}">
+            Create a new record
+        </a>
+    </li>
+</ul>
+
+<h2>Last records</h2>
+{{ render(controller('AppBundle:Record:blockLast')) }}
+
+<h2>Opened projects</h2>
+{{ render(controller('AppBundle:Project:blockIndex')) }}
+
+{% endblock -%}
