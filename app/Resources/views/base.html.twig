@@ -42,16 +42,16 @@
                   <div class="collapse navbar-collapse navbar-ex1-collapse">
                       <ul class="nav navbar-nav side-nav">
                           <li class="{% if app.request.attributes.get('_route') == 'index' %}active{% endif %}">
-                            <a href="{{ path('index') }}"><i class="fa fa-fw fa-dashboard"></i> Home</a>
+                            <a href="{{ path('index') }}"><i class="fa fa-fw fa-home"></i> Home</a>
                           </li>
                           <li class="{% if app.request.attributes.get('_route') == 'clients' %}active{% endif %}">
-                              <a href="{{ path('clients') }}"><i class="fa fa-fw fa-dashboard"></i> Clients</a>
+                              <a href="{{ path('clients') }}"><i class="fa fa-fw fa-users"></i> Clients</a>
                           </li>
                           <li class="{% if app.request.attributes.get('_route') == 'projects' %}active{% endif %}">
-                              <a href="{{ path('projects') }}"><i class="fa fa-fw fa-bar-chart-o"></i> Projects</a>
+                              <a href="{{ path('projects') }}"><i class="fa fa-fw fa-folder-open"></i> Projects</a>
                           </li>
                           <li>
-                              <a href="#"><i class="fa fa-fw fa-table"></i> Statistics</a>
+                              <a href="#"><i class="fa fa-fw fa-bar-chart"></i> Statistics</a>
                           </li>
                       </ul>
                   </div>

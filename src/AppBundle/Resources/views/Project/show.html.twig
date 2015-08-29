@@ -1,6 +1,13 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
+<ul>
+    <li>
+        <a href="{{ path('records_new') }}">
+            Create a new record
+        </a>
+    </li>
+</ul>
     <h1>Project</h1>
 
     <table class="record_properties">
@@ -16,7 +23,7 @@
         </tbody>
     </table>
 
-        <ul class="record_actions">
+<ul class="record_actions">
     <li>
         <a href="{{ path('projects') }}">
             Back to the list
@@ -29,4 +36,8 @@
     </li>
     <li>{{ form(delete_form) }}</li>
 </ul>
+
+<h2>Last records</h2>
+{{ render(controller('AppBundle:Record:blockLast', { 'max': 0, 'project': entity })) }}
+
 {% endblock %}

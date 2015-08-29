@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use AppBundle\Entity\Record;
+use AppBundle\Entity\Project;
 use AppBundle\Form\RecordType;
 
 /**
@@ -225,11 +226,26 @@ class RecordController extends Controller
      * Lists all Record entities.
      *
      */
-    public function blockLastAction($max = 5)
+    public function blockLastAction($max = 5, Project $project = NULL)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AppBundle:Record')->findBy(array(), array('id' => 'DESC'), $max);
+        if ($project) {
+          if ($max) {
+            $entities = $em->getRepository('AppBundle:Record')->findByProject($project, array('id' => 'DESC'), $max);
+          }
+          else {
+            $entities = $em->getRepository('AppBundle:Record')->findByProject($project, array('id' => 'DESC'));
+          }
+        }
+        else {
+          if ($max) {
+            $entities = $em->getRepository('AppBundle:Record')->findBy(array(), array('id' => 'DESC'), $max);
+          }
+          else {
+            $entities = $em->getRepository('AppBundle:Record')->findBy(array(), array('id' => 'DESC'));
+          }
+        }
 
         return $this->render('AppBundle:Record:block/list.html.twig', array(
             'entities' => $entities,
