@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use AppBundle\Entity\Project;
+use AppBundle\Entity\Client;
 use AppBundle\Form\ProjectType;
 
 /**
@@ -226,11 +227,16 @@ class ProjectController extends Controller
      * Lists all Project entities.
      *
      */
-    public function blockIndexAction()
+    public function blockIndexAction(Client $client = NULL)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AppBundle:Project')->findAll();
+        if ($client) {
+          $entities = $em->getRepository('AppBundle:Project')->findByClient($client);
+        }
+        else {
+          $entities = $em->getRepository('AppBundle:Project')->findAll();
+        }
 
         return $this->render('AppBundle:Project:block/list.html.twig', array(
             'entities' => $entities,

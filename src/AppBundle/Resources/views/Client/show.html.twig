@@ -29,4 +29,7 @@
     </li>
     <li>{{ form(delete_form) }}</li>
 </ul>
+
+<h2>Projects</h2>
+{{ render(controller('AppBundle:Project:blockIndex', {'client': entity.id})) }}
 {% endblock %}
