@@ -15,3 +15,7 @@ app_projects:
 app_clients:
     resource: "@AppBundle/Resources/config/routing/client.yml"
     prefix:   /clients
+
+# FOSUser
+logout:
+    path: /logout

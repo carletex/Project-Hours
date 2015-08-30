@@ -21,8 +21,15 @@ html {
   padding-bottom: 40px;
 }
 
-.navbar-right li {
+.navbar-right {
+  margin: 0;
+}
+.navbar-right > li {
   display: inline-block;
+}
+
+.navbar-right > li > a{
+  padding: 15px;
 }
 
 .side-nav li{
