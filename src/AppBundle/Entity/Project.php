@@ -106,4 +106,37 @@ class Project
     {
         return $this->getName();
     }
+
+    /**
+     * Add records
+     *
+     * @param \AppBundle\Entity\Record $records
+     * @return Project
+     */
+    public function addRecord(\AppBundle\Entity\Record $records)
+    {
+        $this->records[] = $records;
+
+        return $this;
+    }
+
+    /**
+     * Remove records
+     *
+     * @param \AppBundle\Entity\Record $records
+     */
+    public function removeRecord(\AppBundle\Entity\Record $records)
+    {
+        $this->records->removeElement($records);
+    }
+
+    /**
+     * Get records
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getRecords()
+    {
+        return $this->records;
+    }
 }

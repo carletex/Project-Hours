@@ -22,4 +22,52 @@ class User extends BaseUser
     {
         parent::__construct();
     }
+
+    /**
+     * @ORM\OneToMany(targetEntity="Record", mappedBy="user")
+     */
+    private $records;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Add records
+     *
+     * @param \AppBundle\Entity\Record $records
+     * @return User
+     */
+    public function addRecord(\AppBundle\Entity\Record $records)
+    {
+        $this->records[] = $records;
+
+        return $this;
+    }
+
+    /**
+     * Remove records
+     *
+     * @param \AppBundle\Entity\Record $records
+     */
+    public function removeRecord(\AppBundle\Entity\Record $records)
+    {
+        $this->records->removeElement($records);
+    }
+
+    /**
+     * Get records
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getRecords()
+    {
+        return $this->records;
+    }
 }

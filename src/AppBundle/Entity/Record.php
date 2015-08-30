@@ -41,6 +41,11 @@ class Record
      */
     protected $project;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="records")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
 
     /**
      * Get id
@@ -114,10 +119,33 @@ class Record
     /**
      * Get project
      *
-     * @return \AppBundle\Entity\Project 
+     * @return \AppBundle\Entity\Project
      */
     public function getProject()
     {
         return $this->project;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     * @return Record
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

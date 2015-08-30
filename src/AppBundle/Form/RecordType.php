@@ -20,7 +20,7 @@ class RecordType extends AbstractType
             ->add('project')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

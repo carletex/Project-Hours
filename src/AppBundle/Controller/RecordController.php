@@ -39,9 +39,10 @@ class RecordController extends Controller
         $entity = new Record();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            // Set user
+            $entity->setUser($this->getUser());
             $em->persist($entity);
             $em->flush();
 
@@ -81,7 +82,6 @@ class RecordController extends Controller
     {
         $entity = new Record();
         $form   = $this->createCreateForm($entity);
-
         return $this->render('AppBundle:Record:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
