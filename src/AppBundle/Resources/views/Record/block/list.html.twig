@@ -1,11 +1,10 @@
-<table class="records_list">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Project</th>
             <th>User</th>
             <th>Description</th>
             <th>Duration</th>
-            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -15,16 +14,6 @@
             <td>{{ entity.user }}</td>
             <td>{{ entity.description }}</td>
             <td>{{ entity.duration }}</td>
-            <td>
-            <ul>
-                <li>
-                    <a href="{{ path('records_show', { 'id': entity.id }) }}">show</a>
-                </li>
-                <li>
-                    <a href="{{ path('records_edit', { 'id': entity.id }) }}">edit</a>
-                </li>
-            </ul>
-            </td>
         </tr>
     {% endfor %}
     </tbody>

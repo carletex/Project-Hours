@@ -21,6 +21,10 @@ html {
   padding-bottom: 40px;
 }
 
+.navbar-right li {
+  display: inline-block;
+}
+
 .side-nav li{
   float: none;
 }
@@ -28,4 +32,13 @@ html {
 #page-wrapper {
   margin: 51px 0 0 225px;
   padding: 20px 50px;
+}
+
+.btn-actions {
+  margin-bottom: 25px;
+  text-align: right;
+}
+
+.btn-actions a {
+  margin-left: 25px;
 }

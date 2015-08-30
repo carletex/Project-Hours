@@ -2,18 +2,28 @@
 
 {% block body -%}
 
-<ul>
-    <li>
-        <a href="{{ path('records_new') }}">
-            Create a new record
+<div class="row">
+  <div class="col-md-6">
+    <h2>Latest records</h2>
+    {{ render(controller('AppBundle:Record:blockLast')) }}
+
+    <div class="btn-actions">
+        <a class="btn btn-primary" href="{{ path('records_new') }}">
+          New record
         </a>
-    </li>
-</ul>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h2>Opened projects</h2>
+    {{ render(controller('AppBundle:Project:blockIndex')) }}
 
-<h2>Opened projects</h2>
-{{ render(controller('AppBundle:Project:blockIndex')) }}
+    <div class="btn-actions">
+        <a class="btn btn-primary" href="{{ path('projects_new') }}">
+            New project
+        </a>
+    </div>
+  </div>
+</div>
 
-<h2>Last records</h2>
-{{ render(controller('AppBundle:Record:blockLast')) }}
 
 {% endblock -%}

@@ -1,23 +1,20 @@
-<table class="records_list">
+<table class="table table-striped">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Name</th>
+            <th>Client</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('projects_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.name }}</td>
+            <td><a href="{{ path('clients_show', { id: entity.client.id }) }}">{{ entity.client }}</td>
             <td>
             <ul>
                 <li>
                     <a href="{{ path('projects_show', { 'id': entity.id }) }}">show</a>
-                </li>
-                <li>
-                    <a href="{{ path('projects_edit', { 'id': entity.id }) }}">edit</a>
                 </li>
             </ul>
             </td>

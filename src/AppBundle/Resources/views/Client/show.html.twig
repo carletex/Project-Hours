@@ -1,9 +1,10 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
+<div class="row">
+  <div class="col-md-6">
     <h1>Client</h1>
-
-    <table class="record_properties">
+    <table class="table table-striped">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -16,20 +17,19 @@
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('clients') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('clients_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
-
+    <div class="btn-actions">
+          <a href="{{ path('clients') }}">
+              Back to the list
+          </a>
+          <a class="btn btn-warning" href="{{ path('clients_edit', { 'id': entity.id }) }}">
+              Edit
+          </a>
+      <!-- {{ form(delete_form) }} -->
+    </div>
+</div>
+  <div class="col-md-6">
 <h2>Projects</h2>
 {{ render(controller('AppBundle:Project:blockIndex', {'client': entity.id})) }}
+</div>
+</div>
 {% endblock %}
