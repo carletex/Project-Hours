@@ -1,15 +1,17 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
+<div class="row">
+  <div class="col-md-6">
     <h1>Project creation</h1>
 
     {{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
+    <div class="btn-actions">
         <a href="{{ path('projects') }}">
             Back to the list
         </a>
-    </li>
-</ul>
+    </div>
+  </div>
+</div>
 {% endblock %}
