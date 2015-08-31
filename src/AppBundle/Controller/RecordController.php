@@ -64,7 +64,9 @@ class RecordController extends Controller
      */
     private function createCreateForm(Record $entity)
     {
-        $form = $this->createForm(new RecordType(), $entity, array(
+        $em = $this->getDoctrine()->getManager();
+
+        $form = $this->createForm(new RecordType($em), $entity, array(
             'action' => $this->generateUrl('records_create'),
             'method' => 'POST',
         ));
