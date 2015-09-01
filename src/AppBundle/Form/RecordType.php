@@ -22,24 +22,25 @@ class RecordType extends AbstractType{
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $query = $this->em->createQueryBuilder()
-          ->select('p','c')
-          ->from('AppBundle:Project', 'p')
-          ->innerJoin('p.client','c')
-          ->getQuery();
-
-        $projects = $query->getResult();
-
-        $choices = array();
-        foreach ($projects as $project) {
-          $choices[$project->getId()] = $project->getName() . ' (' . $project->getClient()->getName() . ')';
-        }
+        // $query = $this->em->createQueryBuilder()
+        //   ->select('p','c')
+        //   ->from('AppBundle:Project', 'p')
+        //   ->innerJoin('p.client','c')
+        //   ->getQuery();
+        //
+        // $projects = $query->getResult();
+        //
+        // $choices = array();
+        // foreach ($projects as $project) {
+        //   $choices[$project->getId()] = $project->getName() . ' (' . $project->getClient()->getName() . ')';
+        // }
 
         $builder
-            ->add('project', 'choice', array(
-              'choices' => $choices,
-              'placeholder' => '',
-            ))
+            // ->add('project', 'choice', array(
+            //   'choices' => $choices,
+            //   'placeholder' => '',
+            // ))
+            ->add('project')
             ->add('description')
             ->add('duration')
         ;
