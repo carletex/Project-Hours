@@ -36,16 +36,23 @@ class Record
     private $duration;
 
     /**
+     * @var date
+     *
+     * @ORM\Column(name="date", type="date")
+     */
+    private $date;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Project", inversedBy="records")
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
-    protected $project;
+    private $project;
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="records")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    protected $user;
+    private $user;
 
     /**
      * Get id
@@ -147,5 +154,28 @@ class Record
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Record
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }

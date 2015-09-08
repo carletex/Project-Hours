@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <th>Project</th>
+            <th>Date</th>
             <th>User</th>
             <th>Description</th>
             <th>Duration</th>
@@ -11,6 +12,7 @@
     {% for entity in entities %}
         <tr>
             <td>{{ entity.project }} ({{ entity.project.client.name }})</td>
+            <td>{{ entity.date | date("d/M/Y") }}</td>
             <td>{{ entity.user }}</td>
             <td>{{ entity.description }}</td>
             <td>{{ entity.duration }}</td>

@@ -34,6 +34,10 @@ class RecordType extends AbstractType{
               'group_by' => 'client',
               'placeholder' => ''
             ))
+            ->add('date', 'date', array(
+              'format' => 'ddMMyyyy',
+              'data' => new \DateTime('now')
+            ))
             ->add('description')
             ->add('duration')
         ;
