@@ -3,6 +3,12 @@
 {% block body -%}
 
 <div class="row">
+  <div class="col-md-12">
+    <p>You've worked {{ day_hours }} hours today.</p>
+    <p>You've worked {{ week_hours }} hours this week.</p>
+  </div>
+</div>
+<div class="row">
   <div class="col-md-6">
     <h2>Latest records</h2>
     {{ render(controller('AppBundle:Record:blockLast')) }}

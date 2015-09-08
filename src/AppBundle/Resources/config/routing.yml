@@ -1,8 +1,6 @@
 index:
     path: /
-    defaults:
-        _controller:  FrameworkBundle:Template:template
-        template:     '@AppBundle/Resources/views/index.html.twig'
+    defaults: { _controller: "AppBundle:Default:index" }
 
 app_records:
     resource: "@AppBundle/Resources/config/routing/record.yml"

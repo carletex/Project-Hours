@@ -8,14 +8,18 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/", name="homepage")
-     */
+
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+
+        dump($this->getUser());
+        // Get user day && week hours. Use record entity repository
+        $day = '4';
+        $week = '25';
+
+        return $this->render('AppBundle::index.html.twig', array(
+          'day_hours' => $day,
+          'week_hours' => $week
         ));
     }
 }
