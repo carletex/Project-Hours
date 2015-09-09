@@ -12,7 +12,7 @@ class RecordRepository extends EntityRepository
         // Today date
         $date = date('Y-m-d', time());
 
-        return $this->getEntityManager()
+        $result = $this->getEntityManager()
             ->createQuery(
                 'SELECT SUM(r.duration)
                 FROM AppBundle:Record r
@@ -24,6 +24,8 @@ class RecordRepository extends EntityRepository
                 )
               )
             ->getSingleScalarResult();
+
+        return $result ? $result : 0;
     }
 
     public function getWeekTimeUser(User $user)
@@ -31,7 +33,7 @@ class RecordRepository extends EntityRepository
         // Last sunday date
         $lastSunday = date('Y-m-d', strtotime('last Sunday'));
 
-        return $this->getEntityManager()
+        $result = $this->getEntityManager()
             ->createQuery(
                 'SELECT SUM(r.duration)
                 FROM AppBundle:Record r
@@ -43,5 +45,7 @@ class RecordRepository extends EntityRepository
                 )
               )
             ->getSingleScalarResult();
+
+        return $result ? $result : 0;
     }
 }

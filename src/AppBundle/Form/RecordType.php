@@ -11,10 +11,12 @@ use Doctrine\ORM\EntityManager;
 class RecordType extends AbstractType{
 
     protected $em;
+    protected $action;
 
-    public function __construct(EntityManager $em)
+    public function __construct(EntityManager $em, $action = NULL)
     {
       $this->em = $em;
+      $this->action = $action;
     }
 
     /**
@@ -23,6 +25,15 @@ class RecordType extends AbstractType{
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
+        $date = array(
+          'format' => 'ddMMyyyy'
+        );
+
+        if ($this->action == 'create') {
+          $date['data'] = new \Datetime('now');
+        }
+
         $builder
             ->add('project', 'entity', array(
               'class' => 'AppBundle:Project',
@@ -34,10 +45,7 @@ class RecordType extends AbstractType{
               'group_by' => 'client',
               'placeholder' => ''
             ))
-            ->add('date', 'date', array(
-              'format' => 'ddMMyyyy',
-              'data' => new \DateTime('now')
-            ))
+            ->add('date', 'date', $date)
             ->add('description')
             ->add('duration')
         ;

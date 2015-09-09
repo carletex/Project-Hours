@@ -66,7 +66,7 @@ class RecordController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $form = $this->createForm(new RecordType($em), $entity, array(
+        $form = $this->createForm(new RecordType($em, 'create'), $entity, array(
             'action' => $this->generateUrl('records_create'),
             'method' => 'POST',
         ));
@@ -235,18 +235,18 @@ class RecordController extends Controller
 
         if ($project) {
           if ($max) {
-            $entities = $em->getRepository('AppBundle:Record')->findByProject($project, array('id' => 'DESC'), $max);
+            $entities = $em->getRepository('AppBundle:Record')->findByProject($project, array('date' => 'DESC'), $max);
           }
           else {
-            $entities = $em->getRepository('AppBundle:Record')->findByProject($project, array('id' => 'DESC'));
+            $entities = $em->getRepository('AppBundle:Record')->findByProject($project, array('date' => 'DESC'));
           }
         }
         else {
           if ($max) {
-            $entities = $em->getRepository('AppBundle:Record')->findBy(array(), array('id' => 'DESC'), $max);
+            $entities = $em->getRepository('AppBundle:Record')->findBy(array(), array('date' => 'DESC'), $max);
           }
           else {
-            $entities = $em->getRepository('AppBundle:Record')->findBy(array(), array('id' => 'DESC'));
+            $entities = $em->getRepository('AppBundle:Record')->findBy(array(), array('date' => 'DESC'));
           }
         }
 
