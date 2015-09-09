@@ -12,10 +12,9 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
 
-        dump($this->getUser());
-        // Get user day && week hours. Use record entity repository
-        $day = '4';
-        $week = '25';
+        $em = $this->getDoctrine()->getManager();
+        $day = $em->getRepository('AppBundle:Record')->getDayTimeUser($this->getUser());
+        $week = $em->getRepository('AppBundle:Record')->getWeekTimeUser($this->getUser());
 
         return $this->render('AppBundle::index.html.twig', array(
           'day_hours' => $day,

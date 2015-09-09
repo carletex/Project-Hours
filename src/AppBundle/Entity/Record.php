@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Record
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\RecordRepository")
  */
 class Record
 {
@@ -172,7 +172,7 @@ class Record
     /**
      * Get date
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDate()
     {
