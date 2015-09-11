@@ -11,10 +11,11 @@ class DefaultController extends Controller
 
     public function indexAction(Request $request)
     {
+        $converter = $this->get('app.dconverter');
 
         $em = $this->getDoctrine()->getManager();
-        $day = $em->getRepository('AppBundle:Record')->getDayTimeUser($this->getUser());
-        $week = $em->getRepository('AppBundle:Record')->getWeekTimeUser($this->getUser());
+        $day = $converter->getDisplayFormat($em->getRepository('AppBundle:Record')->getDayTimeUser($this->getUser()));
+        $week = $converter->getDisplayFormat($em->getRepository('AppBundle:Record')->getWeekTimeUser($this->getUser()));
 
         return $this->render('AppBundle::index.html.twig', array(
           'day_hours' => $day,

@@ -15,7 +15,7 @@
             <td>{{ entity.date | date("d/M/Y") }}</td>
             <td>{{ entity.user }}</td>
             <td>{{ entity.description }}</td>
-            <td>{{ entity.duration }}</td>
+            <td>{{ entity.duration | duration }}</td>
         </tr>
     {% endfor %}
     </tbody>
