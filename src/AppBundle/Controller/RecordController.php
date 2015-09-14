@@ -243,7 +243,7 @@ class RecordController extends Controller
         }
         else {
           if ($max) {
-            $entities = $em->getRepository('AppBundle:Record')->findBy(array(), array('date' => 'DESC'), $max);
+            $entities = $em->getRepository('AppBundle:Record')->findBy(array(), array('date' => 'DESC', 'id' => 'DESC'), $max);
           }
           else {
             $entities = $em->getRepository('AppBundle:Record')->findBy(array(), array('date' => 'DESC'));
