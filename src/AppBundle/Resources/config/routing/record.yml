@@ -2,9 +2,6 @@ records:
     path:     /
     defaults: { _controller: "AppBundle:Record:index" }
 
-records_show:
-    path:     /{id}/show
-    defaults: { _controller: "AppBundle:Record:show" }
 
 records_new:
     path:     /new
