@@ -45,6 +45,14 @@ class ProjectController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add(
+                'message',
+                array(
+                    'alert' => 'success',
+                    'message' => 'The project has been successfully created.',
+                )
+            );
+
             return $this->redirect($this->generateUrl('projects_show', array('id' => $entity->getId())));
         }
 
@@ -173,6 +181,14 @@ class ProjectController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add(
+                'message',
+                array(
+                    'alert' => 'success',
+                    'message' => 'The project has been successfully updated.',
+                )
+            );
+
             return $this->redirect($this->generateUrl('projects_edit', array('id' => $id)));
         }
 
@@ -201,6 +217,14 @@ class ProjectController extends Controller
 
             $em->remove($entity);
             $em->flush();
+
+            $this->get('session')->getFlashBag()->add(
+                'message',
+                array(
+                    'alert' => 'success',
+                    'message' => 'The project has been successfully removed.',
+                )
+            );
         }
 
         return $this->redirect($this->generateUrl('projects'));

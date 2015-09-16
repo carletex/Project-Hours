@@ -62,6 +62,16 @@
               </nav>
             <div id="page-wrapper">
                 <div class="container">
+                  {% if app.session.started %}
+                      {% for flashMessage in app.session.flashbag.get('message') %}
+                          <div class="alert alert-{{ flashMessage.alert }} alert-dismissible" role="alert">
+                              <button type="button" class="close" data-dismiss="alert">
+                                  <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                              </button>
+                              <p>{{ flashMessage.message }}</p>
+                          </div>
+                      {% endfor %}
+                  {% endif %}
                   {% block body %}{% endblock %}
                 </div>
             </div>

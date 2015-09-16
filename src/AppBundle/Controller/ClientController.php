@@ -44,6 +44,14 @@ class ClientController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add(
+                'message',
+                array(
+                    'alert' => 'success',
+                    'message' => 'The client has been successfully created.',
+                )
+            );
+
             return $this->redirect($this->generateUrl('clients_show', array('id' => $entity->getId())));
         }
 
@@ -172,7 +180,15 @@ class ClientController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('clients_edit', array('id' => $id)));
+            $this->get('session')->getFlashBag()->add(
+                'message',
+                array(
+                    'alert' => 'success',
+                    'message' => 'The client has been successfully updated.',
+                )
+            );
+
+            return $this->redirect($this->generateUrl('clients_show', array('id' => $id)));
         }
 
         return $this->render('AppBundle:Client:edit.html.twig', array(
@@ -200,6 +216,15 @@ class ClientController extends Controller
 
             $em->remove($entity);
             $em->flush();
+
+            $this->get('session')->getFlashBag()->add(
+                'message',
+                array(
+                    'alert' => 'success',
+                    'message' => 'The client has been successfully removed.',
+                )
+            );
+
         }
 
         return $this->redirect($this->generateUrl('clients'));

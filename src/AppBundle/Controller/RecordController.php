@@ -45,8 +45,15 @@ class RecordController extends Controller
             $entity->setUser($this->getUser());
             $em->persist($entity);
             $em->flush();
+            $this->get('session')->getFlashBag()->add(
+                'message',
+                array(
+                    'alert' => 'success',
+                    'message' => 'A new record has been added successfully.',
+                )
+            );
 
-            return $this->redirect($this->generateUrl('records_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('projects_show', array('id' => $entity->getProject()->getId())));
         }
 
         return $this->render('AppBundle:Record:new.html.twig', array(
@@ -235,10 +242,10 @@ class RecordController extends Controller
 
         if ($project) {
           if ($max) {
-            $entities = $em->getRepository('AppBundle:Record')->findByProject($project, array('date' => 'DESC'), $max);
+            $entities = $em->getRepository('AppBundle:Record')->findByProject($project, array('date' => 'DESC', 'id' => 'DESC'), $max);
           }
           else {
-            $entities = $em->getRepository('AppBundle:Record')->findByProject($project, array('date' => 'DESC'));
+            $entities = $em->getRepository('AppBundle:Record')->findByProject($project, array('date' => 'DESC', 'id' => 'DESC'));
           }
         }
         else {
@@ -246,7 +253,7 @@ class RecordController extends Controller
             $entities = $em->getRepository('AppBundle:Record')->findBy(array(), array('date' => 'DESC', 'id' => 'DESC'), $max);
           }
           else {
-            $entities = $em->getRepository('AppBundle:Record')->findBy(array(), array('date' => 'DESC'));
+            $entities = $em->getRepository('AppBundle:Record')->findBy(array(), array('date' => 'DESC', 'id' => 'DESC'));
           }
         }
 
