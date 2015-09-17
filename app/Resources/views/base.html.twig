@@ -30,15 +30,15 @@
                       </li>
                       <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-user"></i> {% if app.user %} {{ app.user.username }} {% endif %}<b class="caret"></b>
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {% if app.user %} {{ app.user.username }} {% endif %}<b class="caret"></b>
                           </a>
                           <ul class="dropdown-menu">
                               <li>
-                                  <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                                  <a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</a>
                               </li>
                               <li class="divider"></li>
                               <li>
-                                  <a href="{{ path('logout') }}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                                  <a href="{{ path('logout') }}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Log Out</a>
                               </li>
                           </ul>
                       </li>
@@ -46,16 +46,16 @@
                   <div class="collapse navbar-collapse navbar-ex1-collapse">
                       <ul class="nav navbar-nav side-nav">
                           <li class="{% if app.request.attributes.get('_route') == 'index' %}active{% endif %}">
-                            <a href="{{ path('index') }}"><i class="fa fa-fw fa-home"></i> Home</a>
+                            <a href="{{ path('index') }}"><span class="glyphicon glyphicon-home"></span> Home</a>
                           </li>
                           <li class="{% if app.request.attributes.get('_route') == 'clients' %}active{% endif %}">
-                              <a href="{{ path('clients') }}"><i class="fa fa-fw fa-users"></i> Clients</a>
+                              <a href="{{ path('clients') }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Clients</a>
                           </li>
                           <li class="{% if app.request.attributes.get('_route') == 'projects' %}active{% endif %}">
-                              <a href="{{ path('projects') }}"><i class="fa fa-fw fa-folder-open"></i> Projects</a>
+                              <a href="{{ path('projects') }}"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Projects</a>
                           </li>
                           <li>
-                              <a href="#"><i class="fa fa-fw fa-bar-chart"></i> Statistics</a>
+                              <a href="#"><i class="glyphicon glyphicon-stats"></i> Statistics</a>
                           </li>
                       </ul>
                   </div>
