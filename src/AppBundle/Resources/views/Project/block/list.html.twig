@@ -4,7 +4,6 @@
             <tr>
                 <th>Name</th>
                 <th>Client</th>
-                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -12,13 +11,6 @@
             <tr>
                 <td><a href="{{ path('projects_show', { id: entity.id }) }}">{{ entity.name }}</a></td>
                 <td><a href="{{ path('clients_show', { id: entity.client.id }) }}">{{ entity.client }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('projects_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                </ul>
-                </td>
             </tr>
         {% endfor %}
         </tbody>
