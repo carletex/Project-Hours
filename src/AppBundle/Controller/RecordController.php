@@ -237,6 +237,7 @@ class RecordController extends Controller
 
         return $this->render('AppBundle:Record:block/list.html.twig', array(
             'entities' => $entities,
+            'project' => $project,
         ));
     }
 }

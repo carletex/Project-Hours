@@ -2,7 +2,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Project</th>
+                {% if project is null %}<th>Project</th>{% endif %}
                 <th>Date</th>
                 <th>User</th>
                 <th>Description</th>
@@ -12,7 +12,7 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td>{{ entity.project }} ({{ entity.project.client.name }})</td>
+                {% if project is null %}<td>{{ entity.project }} ({{ entity.project.client.name }})</td>{% endif %}
                 <td>{{ entity.date | date("d/M/Y") }}</td>
                 <td>{{ entity.user }}</td>
                 <td>{{ entity.description }}</td>
