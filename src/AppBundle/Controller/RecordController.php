@@ -160,8 +160,15 @@ class RecordController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
+            $this->get('session')->getFlashBag()->add(
+                'message',
+                array(
+                    'alert' => 'success',
+                    'message' => 'The record has been updated.',
+                )
+            );
 
-            return $this->redirect($this->generateUrl('records_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('projects_show', array('id' => $entity->getProject()->getId())));
         }
 
         return $this->render('AppBundle:Record:edit.html.twig', array(

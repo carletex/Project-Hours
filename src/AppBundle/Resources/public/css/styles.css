@@ -56,6 +56,15 @@ html {
   margin-right: 5px;
 }
 
+/* Tables */
+.table-hover > tbody > tr:hover {
+  background-color: #e5e5e5;
+}
+
+.block-records tbody tr {
+  cursor: pointer;
+}
+
 @media (min-width: 768px) {
   #page-wrapper {
     margin: 50px 0 0 225px;
