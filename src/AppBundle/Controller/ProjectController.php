@@ -111,15 +111,14 @@ class ProjectController extends Controller
         }
 
         $converter = $this->get('app.dconverter');
-        $hours = $em->getRepository('AppBundle:Project')->getTotalHours($entity);
-        $hours = $converter->getDisplayFormat($em->getRepository('AppBundle:Project')->getTotalHours($entity));
+        $timesPerUser = $em->getRepository('AppBundle:Project')->getTotalHoursByUser($entity);
 
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('AppBundle:Project:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-            'hours'       => $hours,
+            'entity'        => $entity,
+            'delete_form'   => $deleteForm->createView(),
+            'times_per_user' => $timesPerUser,
         ));
     }
 

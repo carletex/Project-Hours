@@ -6,22 +6,22 @@ use Doctrine\ORM\EntityRepository;
 
 class ProjectRepository extends EntityRepository
 {
-    public function getTotalHours(Project $project)
+    public function getTotalHoursByUser(Project $project)
     {
-
         $result = $this->getEntityManager()
             ->createQuery(
-                'SELECT SUM(r.duration)
-                FROM AppBundle:Record r
-                WHERE r.project = :project_id'
+                'SELECT SUM(r.duration) as time, u.username
+                FROM AppBundle:Record r, AppBundle:user u
+                WHERE r.project = :project_id AND r.user = u.id
+                GROUP BY r.user'
             )
             ->setParameters(array(
                   'project_id' => $project->getId()
                 )
               )
-            ->getSingleScalarResult();
+            ->getResult();
 
-        return $result ? $result : 0;
+        return $result;
     }
 
 }

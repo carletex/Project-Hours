@@ -18,10 +18,6 @@
                 <th>Client</th>
                 <td><a href="{{ path('clients_show', { 'id': entity.client.id }) }}">{{ entity.client.name }}</td>
             </tr>
-            <tr>
-                <th>Hours spent</th>
-                <td>{{ hours }}</td>
-            </tr>
         </tbody>
     </table>
     <div class="btn-actions">
@@ -34,10 +30,32 @@
       <!-- <li>{{ form(delete_form) }}</li> -->
     </div>
   </div>
-<div class="col-lg-8">
-  <h2>Last records</h2>
-  {{ render(controller('AppBundle:Record:blockLast', { 'max': 0, 'project': entity })) }}
+  <div class="col-lg-8">
+    <h2>Last records</h2>
+    {{ render(controller('AppBundle:Record:blockLast', { 'max': 0, 'project': entity })) }}
+  </div>
 </div>
+
+<div class="row">
+  <div class="col-md-4">
+    <h2>Stats</h2>
+      <table class="table table-striped">
+        <tbody>
+            {% set total_time = 0 %}
+            {% for time_user in times_per_user %}
+              <tr>
+                  <th>{{ time_user.username }}</th>
+                  <td>{{ time_user.time | duration }}</td>
+              </tr>
+              {% set total_time = total_time + time_user.time %}
+            {% endfor %}
+            <tr>
+                <th>Total hours spent</th>
+                <td>{{ total_time | duration }}</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
 </div>
 
 
