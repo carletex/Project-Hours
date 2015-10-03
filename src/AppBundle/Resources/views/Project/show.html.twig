@@ -29,15 +29,6 @@
       </a>
       <!-- <li>{{ form(delete_form) }}</li> -->
     </div>
-  </div>
-  <div class="col-lg-8">
-    <h2>Last records</h2>
-    {{ render(controller('AppBundle:Record:blockLast', { 'max': 0, 'project': entity })) }}
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-4">
     <h2>Stats</h2>
       <table class="table table-striped">
         <tbody>
@@ -55,6 +46,16 @@
             </tr>
         </tbody>
     </table>
+  </div>
+  <div class="col-lg-8">
+    <h2>Last records</h2>
+    {{ render(controller('AppBundle:Record:blockLast', { 'max': 0, 'project': entity })) }}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+
   </div>
 </div>
 
