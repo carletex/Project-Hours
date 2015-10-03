@@ -11,7 +11,7 @@
 <div class="row">
   <div class="col-lg-8">
     <h2>Latest records</h2>
-    {{ render(controller('AppBundle:Record:blockLast')) }}
+    {{ render(controller('AppBundle:Record:blockLast', {'max': 15} )) }}
 
     <div class="btn-actions">
         <a class="btn btn-primary" href="{{ path('records_new') }}">
