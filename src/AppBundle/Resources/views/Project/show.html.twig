@@ -18,6 +18,10 @@
                 <th>Client</th>
                 <td><a href="{{ path('clients_show', { 'id': entity.client.id }) }}">{{ entity.client.name }}</td>
             </tr>
+            <tr>
+                <th>Hours spent</th>
+                <td>{{ hours }}</td>
+            </tr>
         </tbody>
     </table>
     <div class="btn-actions">

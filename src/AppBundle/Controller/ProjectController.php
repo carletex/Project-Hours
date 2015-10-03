@@ -110,11 +110,16 @@ class ProjectController extends Controller
             throw $this->createNotFoundException('Unable to find Project entity.');
         }
 
+        $converter = $this->get('app.dconverter');
+        $hours = $em->getRepository('AppBundle:Project')->getTotalHours($entity);
+        $hours = $converter->getDisplayFormat($em->getRepository('AppBundle:Project')->getTotalHours($entity));
+
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('AppBundle:Project:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            'hours'       => $hours,
         ));
     }
 
