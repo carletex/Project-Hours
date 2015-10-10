@@ -1,0 +1,24 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="profile row">
+  	<div class="col-lg-4">
+    <h1>You account</h1>
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Username</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="btn-actions">
+          <a class="btn btn-warning" href="{{ path('fos_user_change_password') }}">
+              Change password
+          </a>
+    </div>
+</div>

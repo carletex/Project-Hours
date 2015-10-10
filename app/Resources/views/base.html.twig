@@ -34,7 +34,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</a>
+                                <a href="{{ path('fos_user_profile_show') }}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</a>
                             </li>
                             <li class="divider"></li>
                             <li>
@@ -70,6 +70,15 @@
                                 </button>
                                 <p>{{ flashMessage.message }}</p>
                             </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if app.request.hasPreviousSession %}
+                        {% for type, messages in app.session.flashbag.all() %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ type }} alert-dismissible" role="alert">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
                         {% endfor %}
                     {% endif %}
                     
